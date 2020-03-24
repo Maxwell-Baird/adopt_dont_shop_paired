@@ -20,9 +20,11 @@ RSpec.describe "As a visitor", type: :feature do
     expect(page).to have_content(shelter.city)
     expect(page).to have_content(shelter.state)
     expect(page).to have_content(shelter.zip)
-    expect(page).to have_content(review.title)
-    expect(page).to have_content(review.rating)
-    expect(page).to have_content(review.content)
-    expect(page).to have_xpath("//img[contains(@src, '#{review.photo}')]")
+    within("#review-#{review.id}") do
+      expect(page).to have_content(review.title)
+      expect(page).to have_content(review.rating)
+      expect(page).to have_content(review.content)
+      expect(page).to have_xpath("//img[contains(@src, '#{review.photo}')]")
+    end
   end
 end

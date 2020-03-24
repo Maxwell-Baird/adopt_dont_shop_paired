@@ -1,14 +1,21 @@
 <main>
-  <h1><%= @shelter.name %></h1>
-  <p><%= @shelter.address %><br/>
-    <%= @shelter.city %>, <%= @shelter.state %> <%= @shelter.zip %></p>
-  <p><%= link_to "Shelter Pets", "#{@shelter.id}/pets" %> |
-  <%= link_to "Update Shelter", "#{@shelter.id}/edit" %> |
-  <%= link_to "Delete Shelter", "#{@shelter.id}", method: :delete %></p>
-  <h2>Reviews</h2>
-  <% @shelter.reviews.each do |review| %>
-    <%= review.title %>
-    <%= review.rating %>
-    <%= review.content %>
-  <% end %>
+  <section id="information">
+    <h1><%= @shelter.name %></h1>
+    <p><%= @shelter.address %><br/>
+      <%= @shelter.city %>, <%= @shelter.state %> <%= @shelter.zip %></p>
+    <p><%= link_to "Shelter Pets", "#{@shelter.id}/pets" %> |
+    <%= link_to "Update Shelter", "#{@shelter.id}/edit" %> |
+    <%= link_to "Delete Shelter", "#{@shelter.id}", method: :delete %></p>
+  </section>
+  <section id="reviews">
+    <h2>Reviews</h2>
+    <% @shelter.reviews.each do |review| %>
+      <article id="review-<%= review.id %>">
+        <h3><%= review.title %></h3>
+        <p>Rating: <%= review.rating %><br/>
+        <%= review.content %></p>
+        <%= image_tag review.photo if review.photo != nil  %>
+      </article>
+    <% end %>
+  </section>
 </main>
