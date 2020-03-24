@@ -8,6 +8,10 @@ RSpec.describe "As a visitor", type: :feature do
                              city:    "Denver",
                              state:   "CO",
                              zip:     "80231")
+    review = shelter.reviews.create(title:    "Awesome place!",
+                                    rating:   5,
+                                    content:  "Truly enjoyed our time working with this shelter. Staff was great, and we found our perfect pet!",
+                                    photo:    "https://i.imgur.com/c6SIBcM.jpg")
 
     visit "/shelters/#{shelter.id}"
 
@@ -16,5 +20,9 @@ RSpec.describe "As a visitor", type: :feature do
     expect(page).to have_content(shelter.city)
     expect(page).to have_content(shelter.state)
     expect(page).to have_content(shelter.zip)
+    expect(page).to have_content(review.title)
+    expect(page).to have_content(review.rating)
+    expect(page).to have_content(review.content)
+    expect(page).to have_xpath("//img[contains(@src, '#{review.photo}')]")
   end
 end
