@@ -1,0 +1,15 @@
+<main>
+  <%= form_tag "/pets/#{@pet.id}", method: :patch do %>
+    <%= label_tag :image %><br/>
+    <%= text_field_tag :image %><br/>
+    <%= label_tag :name %><br/>
+    <%= text_field_tag :name %><br/>
+    <%= label_tag :description %><br/>
+    <%= text_field_tag :description %><br/>
+    <%= label_tag :approx_age, "Approximate Age" %><br/>
+    <%= text_field_tag :approx_age %><br/>
+    <%= label_tag :sex %><br/>
+    <%= select_tag :sex, options_for_select(["male", "female"]) %><br/>
+    <%= submit_tag "Update Pet" %>
+  <% end %>
+</main>

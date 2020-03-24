@@ -1,0 +1,24 @@
+<main>
+  <h1><%= link_to @shelter.name, "/shelters/#{@shelter.id}" %></h1>
+  <p><%= link_to "Create Pet", "/shelters/#{@shelter.id}/pets/new" %></p>
+  <% @shelter.pets.each do |pet| %>
+    <h2><%= link_to pet.name, "/pets/#{pet.id}" %></h2>
+    <div class="row">
+      <div class="col-3">
+        <%= image_tag pet.image %>
+      </div>
+      <div class="col-1">
+      </div>
+      <div class="col-4">
+        <p>Approximate Age: <%= pet.approx_age %>
+        Sex: <%= pet.sex %>
+        Status: <%= pet.status %></p>
+      </div>
+      <div class="col-1">
+      </div>
+      <div class="col-2">
+        <p><%= link_to "Update Pet", "/pets/#{pet.id}/edit" %></p>
+      </div>
+    </div>
+  <% end %>
+</main>
