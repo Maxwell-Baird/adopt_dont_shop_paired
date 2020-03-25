@@ -9,30 +9,30 @@ RSpec.describe "As a visitor", type: :feature do
                              state:   "CO",
                              zip:     "80020")
 
-   review_1 = shelter.reviews.create(title:    "Awesome place!",
-                                   rating:   5,
-                                   content:  "Truly enjoyed our time working with this shelter. Staff was great, and we found our perfect pet!",
-                                   photo:    "https://i.imgur.com/c6SIBcM.jpg")
+   review_1 = shelter.reviews.create(title: "Awesome place!",
+                                   rating: 4,
+                                   content: "Truly enjoyed our time working with this shelter. Staff was great, and we found our perfect pet!",
+                                   photo: "https://i.imgur.com/c6SIBcM.jpg")
 
-   review_2 = shelter.reviews.create(title:    "Great Place",
-                                   rating:   5,
-                                   content:  "Love my new fluff ball",
-                                   photo:    "http://www.pngall.com/wp-content/uploads/4/Golden-Retriever-Puppy-PNG.png")
+   review_2 = shelter.reviews.create(title: "Great Place",
+                                   rating: 5,
+                                   content: "Love my new fluff ball",
+                                   photo: "http://www.pngall.com/wp-content/uploads/4/Golden-Retriever-Puppy-PNG.png")
 
     visit "/shelters/#{shelter.id}"
-    click_link( "Delete Review #{review_1.id}")
+    first(:link, 'Delete Review').click
 
-    within("#review-#{review_1.id}") do
-      expect(page).to_not have_content(review_1.title)
-      expect(page).to_not have_content(review_1.rating)
-      expect(page).to_not have_content(review_1.content)
-      expect(page).to_not have_xpath("//img[contains(@src, '#{review_1.photo}')]")
-    end
+    expect(page).to have_current_path("/shelters/#{shelter.id}")
+    expect(page).to have_no_content(review_1.title)
+    expect(page).to have_no_content("Rating: #{review_1.rating}")
+    expect(page).to have_no_content(review_1.content)
+    expect(page).to have_no_xpath("//img[contains(@src, '#{review_1.photo}')]")
+
     within("#review-#{review_2.id}") do
       expect(page).to have_content(review_2.title)
       expect(page).to have_content(review_2.rating)
       expect(page).to have_content(review_2.content)
-      expect(page).to have_xpath("//img[contains(@src, '#{review_2.photo}')]")
+      expect(page).to have_css("img[src*='http://www.pngall.com/wp-content/uploads/4/Golden-Retriever-Puppy-PNG.png']")
     end
   end
 end

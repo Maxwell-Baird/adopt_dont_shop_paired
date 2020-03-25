@@ -9,12 +9,13 @@
   </section>
 
   <section id="reviews">
-    <%= link_to "New Review", "#{@shelter.id}/reviews/new" %> 
+    <%= link_to "New Review", "#{@shelter.id}/reviews/new" %>
     <h2>Reviews</h2>
     <% @shelter.reviews.each do |review| %>
       <article id="review-<%= review.id %>">
         <h3><%= review.title %></h3>
         <%= link_to "Edit Review", "/reviews/#{review.id}/edit" %>
+        <%= link_to "Delete Review", "#{@shelter.id}/reviews/#{review.id}", method: :delete %>
         <p>Rating: <%= review.rating %><br/>
         <%= review.content %></p>
         <%= image_tag review.photo if review.photo != nil  %>
