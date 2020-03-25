@@ -58,7 +58,7 @@ RSpec.describe "As a visitor", type: :feature do
 
       expect(page).to have_current_path("/shelters/#{shelter.id}")
       expect(page).to have_content("Great Place")
-      expect(page).to have_content(5)
+      expect(page).to have_content('Rating: 5')
       expect(page).to have_content("Love my new fluff ball")
   end
 end

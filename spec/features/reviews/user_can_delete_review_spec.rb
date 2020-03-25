@@ -20,7 +20,21 @@ RSpec.describe "As a visitor", type: :feature do
                                    photo: "http://www.pngall.com/wp-content/uploads/4/Golden-Retriever-Puppy-PNG.png")
 
     visit "/shelters/#{shelter.id}"
-    first(:link, 'Delete Review').click
+    within("#review-#{review_1.id}") do
+      expect(page).to have_content(review_1.title)
+      expect(page).to have_content(review_1.rating)
+      expect(page).to have_content(review_1.content)
+      expect(page).to have_css("img[src*='https://i.imgur.com/c6SIBcM.jpg']")
+    end
+    within("#review-#{review_2.id}") do
+      expect(page).to have_content(review_2.title)
+      expect(page).to have_content(review_2.rating)
+      expect(page).to have_content(review_2.content)
+      expect(page).to have_css("img[src*='http://www.pngall.com/wp-content/uploads/4/Golden-Retriever-Puppy-PNG.png']")
+    end
+    within("#review-#{review_1.id}") do
+      click_link "Delete Review"
+    end
 
     expect(page).to have_current_path("/shelters/#{shelter.id}")
     expect(page).to have_no_content(review_1.title)
