@@ -14,12 +14,13 @@ RSpec.describe "As a visitor", type: :feature do
                                     photo:    "https://i.imgur.com/c6SIBcM.jpg")
 
     visit "/shelters/#{shelter.id}"
-
-    expect(page).to have_content(shelter.name)
-    expect(page).to have_content(shelter.address)
-    expect(page).to have_content(shelter.city)
-    expect(page).to have_content(shelter.state)
-    expect(page).to have_content(shelter.zip)
+    within("#information") do
+      expect(page).to have_content(shelter.name)
+      expect(page).to have_content(shelter.address)
+      expect(page).to have_content(shelter.city)
+      expect(page).to have_content(shelter.state)
+      expect(page).to have_content(shelter.zip)
+    end
     within("#review-#{review.id}") do
       expect(page).to have_content(review.title)
       expect(page).to have_content(review.rating)
