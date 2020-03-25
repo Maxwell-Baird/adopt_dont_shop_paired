@@ -34,9 +34,31 @@ RSpec.describe "As a visitor", type: :feature do
                                zip:     "80020")
 
       visit "/shelters/#{shelter.id}"
-
       click_on 'New Review'
+      expect(page).to have_current_path("/shelters/#{shelter.id}/reviews/new")
+
       click_on "Create Review"
       expect(page).to have_content("Review not created: Required information missing.")
+  end
+  it 'I can create an review without a photo' do
+      shelter = Shelter.create(name:    "Broomfield Pet Shelter",
+                               address: "1111 fake st.",
+                               city:    "Broomfield",
+                               state:   "CO",
+                               zip:     "80020")
+
+      visit "/shelters/#{shelter.id}"
+      click_on 'New Review'
+      expect(page).to have_current_path("/shelters/#{shelter.id}/reviews/new")
+
+      fill_in :title, with: "Great Place"
+      fill_in :rating, with: 5
+      fill_in :content, with: "Love my new fluff ball"
+      click_on "Create Review"
+
+      expect(page).to have_current_path("/shelters/#{shelter.id}")
+      expect(page).to have_content("Great Place")
+      expect(page).to have_content(5)
+      expect(page).to have_content("Love my new fluff ball")
   end
 end

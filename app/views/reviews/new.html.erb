@@ -1,11 +1,11 @@
 <main>
   <%= form_tag "/shelters/#{@shelter.id}" do %>
     <%= label_tag :title %><br/>
-    <%= text_field_tag :title %><br/>
+    <%= text_field_tag :title, nil, :required => true %> <br/>
     <%= label_tag :rating %><br/>
-    <%= text_field_tag :rating %><br/>
+    <%= text_field_tag :rating, nil, :required => true  %><br/>
     <%= label_tag :content %><br/>
-    <%= text_area_tag :content %><br/>
+    <%= text_area_tag :content, nil, :required => true  %><br/>
     <%= label_tag :photo %><br/>
     <%= text_field_tag :photo %><br/>
     <%= submit_tag "Create Review" %>
