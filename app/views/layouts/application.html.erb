@@ -21,6 +21,9 @@
           <%= link_to "Pet Index", "/pets" %>
         </nav>
       </header>
+      <% flash.each do |_, message| %>
+        <p><%= message %></p>
+      <% end %>
       <%= yield %>
     </div>
   </body>
