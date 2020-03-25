@@ -12,20 +12,18 @@ RSpec.describe "As a visitor", type: :feature do
     visit "/shelters/#{shelter.id}"
     click_link "New Review"
 
-    expect(page).to have_current_path("/reviews/new")
+    expect(page).to have_current_path("/shelters/#{shelter.id}/reviews/new")
 
     fill_in :title, with: "Great Place"
     fill_in :rating, with: 5
     fill_in :content, with: "Love my new fluff ball"
-    fill_in :photo, with: 'http://pngimg.com/uploads/dog/dog_PNG50348.png'
+    fill_in :photo, with: 'http://www.pngall.com/wp-content/uploads/4/Golden-Retriever-Puppy-PNG.png'
     click_on "Create Review"
-    expect(page).to have_current_path("/shelters/#{shelter.id}")
 
-    within("#review-1") do
-      expect(page).to have_content("Great Place")
-      expect(page).to have_content(5)
-      expect(page).to have_content("Love my new fluff ball")
-      expect(page).to have_xpath('http://pngimg.com/uploads/dog/dog_PNG50348.png')
-    end
+    expect(page).to have_current_path("/shelters/#{shelter.id}")
+    expect(page).to have_content("Great Place")
+    expect(page).to have_content(5)
+    expect(page).to have_content("Love my new fluff ball")
+    expect(page).to have_css("img[src*='http://www.pngall.com/wp-content/uploads/4/Golden-Retriever-Puppy-PNG.png']")
   end
 end
