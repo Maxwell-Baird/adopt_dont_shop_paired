@@ -53,4 +53,17 @@ pet4 = Pet.create(image:        "https://i.imgur.com/I7tu1MA.jpg",
                   approx_age:   12,
                   sex:          "female",
                   status:       "pending adoption",
-                  shelter_id:   shelter3.id)
+                  shelter_id:   shelter3.id)\
+
+review1 = Review.create(title:      "Awesome place!",
+                        rating:     5,
+                        content:    "Truly enjoyed our time working with this shelter. Staff was great, and we found our perfect pet!",
+                        photo:      "https://i.imgur.com/c6SIBcM.jpg",
+                        shelter_id: shelter1.id)
+review2 = Review.create(title:      "Starting to get concerned!",
+                        rating:     3,
+                        content:    "The fish I got through this shelter is very rude.",
+                        photo:      "https://i.imgur.com/fDMRAMt.jpg",
+                        shelter_id: shelter1.id)
+
+
