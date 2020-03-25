@@ -9,7 +9,8 @@ RSpec.describe "As a visitor", type: :feature do
                              state:   "CO",
                              zip:     "80020")
 
-    click_link "Create Review"
+    visit "/shelters/#{shelter.id}"
+    click_link "New Review"
 
     expect(page).to have_current_path("/reviews/new")
 

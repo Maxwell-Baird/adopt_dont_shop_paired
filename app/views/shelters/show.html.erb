@@ -7,7 +7,9 @@
     <%= link_to "Update Shelter", "#{@shelter.id}/edit" %> |
     <%= link_to "Delete Shelter", "#{@shelter.id}", method: :delete %></p>
   </section>
+
   <section id="reviews">
+    <%= link_to "New Review", "reviews/new" %> 
     <h2>Reviews</h2>
     <% @shelter.reviews.each do |review| %>
       <article id="review-<%= review.id %>">
