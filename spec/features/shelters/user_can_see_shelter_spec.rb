@@ -14,6 +14,7 @@ RSpec.describe "As a visitor", type: :feature do
                                     photo:    "https://i.imgur.com/c6SIBcM.jpg")
 
     visit "/shelters/#{shelter.id}"
+    
     within("#information") do
       expect(page).to have_content(shelter.name)
       expect(page).to have_content(shelter.address)
