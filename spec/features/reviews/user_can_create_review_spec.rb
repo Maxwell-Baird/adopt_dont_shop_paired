@@ -26,4 +26,17 @@ RSpec.describe "As a visitor", type: :feature do
     expect(page).to have_content("Love my new fluff ball")
     expect(page).to have_css("img[src*='http://www.pngall.com/wp-content/uploads/4/Golden-Retriever-Puppy-PNG.png']")
   end
+  it 'I can not create an review without a title' do
+      shelter = Shelter.create(name:    "Broomfield Pet Shelter",
+                               address: "1111 fake st.",
+                               city:    "Broomfield",
+                               state:   "CO",
+                               zip:     "80020")
+
+      visit "/shelters/#{shelter.id}"
+
+      click_on 'New Review'
+      click_on "Create Review"
+      expect(page).to have_content("Review not created: Required information missing.")
+  end
 end
