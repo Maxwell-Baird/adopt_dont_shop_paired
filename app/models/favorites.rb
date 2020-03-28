@@ -5,7 +5,7 @@ class Favorites
     @contents = initial_contents || Array.new
   end
 
-  def total_count
+  def count_of
     @contents.length
   end
 

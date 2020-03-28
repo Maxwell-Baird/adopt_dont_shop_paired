@@ -12,7 +12,7 @@
     <div class="container">
       <header>
         <div id="favorites">
-          <p>Favorites: <%= @favorites == nil ? 0 : @favorites.total_count %> </p>
+          <p>Favorites: <%= @favorites == nil ? 0 : @favorites.count_of %> </p>
         </div>
         <nav>
           <%= link_to "Home", "/" %> |
