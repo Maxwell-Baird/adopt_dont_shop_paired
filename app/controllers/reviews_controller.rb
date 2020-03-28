@@ -1,9 +1,11 @@
 class ReviewsController < ApplicationController
   def edit
+    @favorites = Favorites.new(session[:favorites])
     @review = Review.find(params[:id])
   end
 
   def update
+
     @review = Review.find(params[:id])
 
     if valid_params?
