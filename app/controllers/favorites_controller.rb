@@ -9,5 +9,11 @@ class FavoritesController < ApplicationController
   end
 
   def index
+    @favorites= Favorites.new(session[:favorites])
+  end
+
+  def destroy
+    session[:favorites] = []
+    redirect_to "/favorites"
   end
 end

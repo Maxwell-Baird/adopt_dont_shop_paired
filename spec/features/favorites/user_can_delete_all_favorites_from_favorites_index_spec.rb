@@ -21,13 +21,15 @@ RSpec.describe "As a visitor", type: :feature do
                               approx_age:   2,
                               sex:          "male",
                               status:       "pending adoption")
-    Favorites.new([pet1.id.to_s,pet2.id.to_s])
-
-    visit "/favorites"
-
+    visit "/pets/#{pet1.id}"
+    click_link "Favorite Pet"
+    visit "/pets/#{pet2.id}"
+    click_link "Favorite Pet"
     within('#favorites') do
-      expect(page).to have_content("Favorites: 2")
+      click_link "Favorites: 2"
     end
+
+    expect(page).to_not have_content("You have no favorited pets")
 
     click_link "Remove All Favorited Pets"
 
