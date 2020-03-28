@@ -22,9 +22,10 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to have_content("Favorites: 0")
     end
 
-    click_link "Favorite"
+    click_link "Favorite Pet"
 
-    expect(page).to have_content("#{pet.name} at #{pet.shelter} has been added to favorites")
+    expect(page).to have_current_path("/pets/#{pet.id}")
+    expect(page).to have_content("#{pet.name} at #{pet.shelter.name} has been added to favorites")
     within('#favorites') do
       expect(page).to have_content("Favorites: 1")
     end
