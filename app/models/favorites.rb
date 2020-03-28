@@ -12,4 +12,8 @@ class Favorites
   def add_pet(pet_id)
     @contents << pet_id.to_s
   end
+
+  def find_pet(pet_id)
+    pet = Pet.find(pet_id.to_i)
+  end
 end

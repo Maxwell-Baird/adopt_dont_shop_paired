@@ -9,7 +9,7 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @favorites= Favorites.new(session[:favorites])
+    @favorites = Favorites.new(session[:favorites])
   end
 
   def destroy
