@@ -7,4 +7,7 @@ class FavoritesController < ApplicationController
     flash[:notice] = "#{pet.name} at #{pet.shelter.name} has been added to favorites"
     redirect_to "/pets/#{pet.id}"
   end
+
+  def index
+  end
 end
