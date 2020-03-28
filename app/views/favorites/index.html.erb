@@ -1,0 +1,4 @@
+<main>
+<%= link_to "Remove All Favorited Pets", "/favorites", method: :delete %>
+<%= @favorites.count_of == 0 ? "You have no favorited pets" : "" %>
+</main>

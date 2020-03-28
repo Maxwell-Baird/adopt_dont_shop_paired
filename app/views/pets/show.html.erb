@@ -11,7 +11,8 @@
       Sex: <%= @pet.sex %><br/>
       Status: <%= @pet.status %><br/>
       <%= link_to "Update Pet", "#{@pet.id}/edit" %> |
-      <%= link_to "Delete Pet", "#{@pet.id}", method: :delete %></p>
+      <%= link_to "Delete Pet", "#{@pet.id}", method: :delete %><br/>
+      <%= link_to "Favorite Pet", "/favorites/#{@pet.id}", method: :patch %></p>
     </div>
     <div class="col-8">
       <p><%= @pet.description %></p>
