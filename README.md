@@ -32,7 +32,7 @@ Each review will have:
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 3, Shelter Review Creation
 
@@ -50,7 +50,7 @@ and I can see my new review
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 4, Shelter Review Creation, cont.
 
@@ -91,7 +91,7 @@ And I'm returned to the edit form to edit that review
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 7, Delete a Shelter Review
 
