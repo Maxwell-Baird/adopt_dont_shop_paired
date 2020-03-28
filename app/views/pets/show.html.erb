@@ -15,7 +15,7 @@
       <% if !@favorites.been_favorited(@pet.id.to_s) %>
         <%= link_to 'Favorite Pet', "/favorites/#{@pet.id}", method: :patch %></p>
       <%else%>
-        <%= link_to 'Remove from favorites', "/favorites/#{@pet.id}", method: :delete %></p>
+        <%= link_to 'Remove from favorites', "/favorites/#{@pet.id}", method: :delete %>
       <%end%>
     </div>
     <div class="col-8">
