@@ -12,12 +12,11 @@
       Status: <%= @pet.status %><br/>
       <%= link_to "Update Pet", "#{@pet.id}/edit" %> |
       <%= link_to "Delete Pet", "#{@pet.id}", method: :delete %><br/>
-      <% if @favorites.been_favorited(@pet.id) == true%>
-        <%= link_to "Remove from favorites", "/favorites/#{@pet.id}", method: :delete %>
-      <% else %>
-        <%= link_to "Favorite Pet", "/favorites/#{@pet.id}", method: :patch %></p>
-      <% end %>
-
+      <% if !@favorites.been_favorited(@pet.id.to_s) %>
+        <%= link_to 'Favorite Pet', "/favorites/#{@pet.id}", method: :patch %></p>
+      <%else%>
+        <%= link_to 'Remove from favorites', "/favorites/#{@pet.id}", method: :delete %></p>
+      <%end%>
     </div>
     <div class="col-8">
       <p><%= @pet.description %></p>
