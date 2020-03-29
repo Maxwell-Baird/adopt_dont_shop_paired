@@ -29,12 +29,12 @@ RSpec.describe "As a visitor", type: :feature do
     visit "/favorites"
 
     within("#pet-#{pet_1.id}") do
-      expect(page).to have_content("Name: #{pet_1.name}")
+      expect(page).to have_content(pet_1.name)
       expect(page).to have_css("img[src*='#{pet_1.image}']")
     end
 
     within("#pet-#{pet_2.id}") do
-      expect(page).to have_content("Name: #{pet_2.name}")
+      expect(page).to have_content(pet_2.name)
       expect(page).to have_css("img[src*='#{pet_2.image}']")
     end
   end
@@ -67,12 +67,12 @@ RSpec.describe "As a visitor", type: :feature do
     visit "/favorites"
 
     within("#pet-#{pet_1.id}") do
-      expect(page).to have_content("Name: #{pet_1.name}")
+      expect(page).to have_content(pet_1.name)
       expect(page).to have_css("img[src*='#{pet_1.image}']")
       expect(page).to have_content("Remove from favorites")
     end
     within("#pet-#{pet_2.id}") do
-      expect(page).to have_content("Name: #{pet_2.name}")
+      expect(page).to have_content(pet_2.name)
       expect(page).to have_css("img[src*='#{pet_2.image}']")
       expect(page).to have_content("Remove from favorites")
     end
@@ -80,11 +80,13 @@ RSpec.describe "As a visitor", type: :feature do
       click_link "Remove from favorites"
     end
 
-    expect(page).to have_no_content("Name: #{pet_1.name}")
-    expect(page).to have_no_css("img[src*='#{pet_1.image}']")
+    within("main") do
+      expect(page).to have_no_content(pet_1.name)
+      expect(page).to have_no_css("img[src*='#{pet_1.image}']")
+    end
 
     within("#pet-#{pet_2.id}") do
-      expect(page).to have_content("Name: #{pet_2.name}")
+      expect(page).to have_content(pet_2.name)
       expect(page).to have_css("img[src*='#{pet_2.image}']")
       expect(page).to have_content("Remove from favorites")
     end
