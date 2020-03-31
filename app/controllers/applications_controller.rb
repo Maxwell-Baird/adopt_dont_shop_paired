@@ -4,7 +4,8 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    Application.create(application_params)
+    application = Application.create(application_params)
+    application.pets << params[:pets].map { |pet_id_str| Pet.find(pet_id_str.to_i) }
     flash[:notice] = "Your application has been submitted"
     favorites.remove_pets(params[:pets])
     redirect_to '/favorites'
