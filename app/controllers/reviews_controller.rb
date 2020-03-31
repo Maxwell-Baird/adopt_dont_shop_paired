@@ -37,12 +37,12 @@ class ReviewsController < ApplicationController
 
   private
 
+  def review_params
+    params.permit(:title, :rating, :content, :photo)
+  end
+
   def valid_params?
     required_params = review_params.values_at(:title, :rating, :content)
     required_params.none?(&:empty?)
-  end
-
-  def review_params
-    params.permit(:title, :rating, :content, :photo)
   end
 end
