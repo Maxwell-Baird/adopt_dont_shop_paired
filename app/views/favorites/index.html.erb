@@ -1,12 +1,12 @@
 <main>
   <%= link_to "Remove All Favorited Pets", "/favorites", method: :delete %>
-  <% if @favorites.count_of == 0 %>
+  <% if favorites.count_of == 0 %>
     <p>You have no favorited pets </p>
   <% end %>
-  <% @favorites.contents.each do |pet_id| %>
+  <% favorites.contents.each do |pet_id| %>
     <article id="pet-<%= pet_id %>">
-      <h2><%= link_to @favorites.find_pet(pet_id).name, "/pets/#{@favorites.find_pet(pet_id).id}" %></h2>
-      <%= image_tag @favorites.find_pet(pet_id).image %>
+      <h2><%= link_to favorites.find_pet(pet_id).name, "/pets/#{favorites.find_pet(pet_id).id}" %></h2>
+      <%= image_tag favorites.find_pet(pet_id).image %>
       <%= link_to 'Remove from favorites', "/favorites/#{pet_id}", method: :delete %>
     </article>
   <% end %>
