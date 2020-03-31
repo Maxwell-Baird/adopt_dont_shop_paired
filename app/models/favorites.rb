@@ -18,10 +18,14 @@ class Favorites
   end
 
   def find_pet(pet_id)
-    pet = Pet.find(pet_id.to_i)
+    Pet.find(pet_id.to_i)
   end
 
   def remove_pet(pet_id)
     @contents.delete(pet_id.to_s)
+  end
+
+  def remove_all_pets
+    @contents.clear
   end
 end

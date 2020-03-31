@@ -11,12 +11,11 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    if params[:pet_id] == nil
-      session[:favorites] = []
+    if params[:pet_id].nil?
+      favorites.remove_all_pets
     else
       pet = Pet.find(params[:pet_id])
       favorites.remove_pet(pet.id)
-      session[:favorites] = favorites.contents
       flash[:notice] = "#{pet.name} at #{pet.shelter.name} has been removed from favorites"
     end
     redirect_back fallback_location: @post
