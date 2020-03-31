@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "As a visitor", type: :feature do
-  xit "I can apply to adopt my favorite pets" do
+  it "I can apply to adopt my favorite pets" do
     shelter1 = Shelter.create(name:    "Dumb Friends League",
                               address: "2080 S. Quebec St.",
                               city:    "Denver",
@@ -12,19 +12,19 @@ RSpec.describe "As a visitor", type: :feature do
                               city:     "Denver",
                               state:    "CO",
                               zip:      "80204")
-    pet_1 = shelter1.pets.create(image:       "https://i.imgur.com/9AyaA0q.jpg",
+    pet1 = shelter1.pets.create(image:       "https://i.imgur.com/9AyaA0q.jpg",
                                 name:         "Kona",
                                 description:  "Kona greets everyone with the biggest smile! He's always happy and is so easy to fall in love with. He seems to love everyone he meets, but can get a little overly excited some times and may knock little kids down. He is reportedly housebroken and does well when left alone in the home. He would benefit from daily walks and lots of playtime!",
                                 approx_age:   6,
                                 sex:          "male",
                                 status:       "adoptable")
-    pet_2 = shelter1.pets.create(image:       "http://www.pngall.com/wp-content/uploads/4/Golden-Retriever-Puppy-PNG.png",
+    pet2 = shelter1.pets.create(image:       "http://www.pngall.com/wp-content/uploads/4/Golden-Retriever-Puppy-PNG.png",
                                 name:         "Max",
                                 description:  "Max likes to eat all different types of food",
                                 approx_age:   3,
                                 sex:          "male",
                                 status:       "adoptable")
-    pet_3 = shelter2.pets.create(image:       "https://i.imgur.com/2M5NPna.jpg",
+    pet3 = shelter2.pets.create(image:       "https://i.imgur.com/2M5NPna.jpg",
                                 name:         "Molly",
                                 description:  "Hi, everybody! Did you know that Molly means 'star of the sea?' This Molly here may soon mean 'star of your life!' If you like the sound of that, let me tell you more about myself. You will love what you hear! I'm a super sweet, 11-year-old Australian Cattle Dog female. I am an adorable, medium-sized girl weighing about 35 lbs. What a great size, don't you think?",
                                 approx_age:   11,
@@ -39,11 +39,11 @@ RSpec.describe "As a visitor", type: :feature do
                         description:  "I would make a great dog dad!"}
 
 
-    visit "/pets/#{pet_1.id}"
+    visit "/pets/#{pet1.id}"
     click_link "Favorite Pet"
-    visit "/pets/#{pet_2.id}"
+    visit "/pets/#{pet2.id}"
     click_link "Favorite Pet"
-    visit "/pets/#{pet_3.id}"
+    visit "/pets/#{pet3.id}"
     click_link "Favorite Pet"
     visit "/favorites"
     click_link "Adopt Pets"

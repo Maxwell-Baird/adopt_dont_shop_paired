@@ -25,6 +25,10 @@ class Favorites
     @contents.delete(pet_id.to_s)
   end
 
+  def remove_pets(pet_ids)
+    pet_ids.each { |pet_id| remove_pet(pet_id) }
+  end
+
   def remove_all_pets
     @contents.clear
   end

@@ -5,7 +5,9 @@ class ApplicationsController < ApplicationController
 
   def create
     Application.create(application_params)
-    redirect_to '/shelters'
+    flash[:notice] = "Your application has been submitted"
+    favorites.remove_pets(params[:pets])
+    redirect_to '/favorites'
   end
 
   private
