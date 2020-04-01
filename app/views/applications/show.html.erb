@@ -11,5 +11,7 @@
   </p>
   <% @application.pets.each do |pet| %>
     <%= link_to pet.name, "/pets/#{pet.id}" %><br/>
+
+    <%= link_to "Approve #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :patch%><br/>
   <% end %>
 </main>

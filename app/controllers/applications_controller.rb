@@ -20,6 +20,16 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def status
+    @pet = Pet.find(params[:pet])
+    application = Application.find(params[:id])
+    @pet.status = "Pending"
+    @pet.application_approved = params[:id]
+    @pet.save
+    flash[:notice] = "On hold for #{application.name}"
+    redirect_to "/pets/#{@pet.id}"
+  end
+
   private
 
   def application_params
