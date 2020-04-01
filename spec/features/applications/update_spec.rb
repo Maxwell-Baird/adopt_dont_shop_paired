@@ -21,41 +21,6 @@ RSpec.describe "As a visitor" do
                                 status:       "adoptable")
   end
 
-  it "I can approve a pet adoption" do
-    application_info = {name:         "Rick Astley",
-                        address:      "123 Wisteria Ln",
-                        city:         "Denver",
-                        state:        "CO",
-                        zip:          "80202",
-                        phone:        "123-4567",
-                        description:  "I would make a great dog dad!"}
-
-    visit "/pets/#{@pet1.id}"
-    click_link "Favorite Pet"
-    click_link "Favorites: 1"
-    click_link "Adopt Pets"
-    select @pet1.name, from: :pets
-    fill_in :name, with: application_info[:name]
-    fill_in :address, with: application_info[:address]
-    fill_in :city, with: application_info[:city]
-    fill_in :state, with: application_info[:state]
-    fill_in :zip, with: application_info[:zip]
-    fill_in :phone, with: application_info[:phone]
-    fill_in :description, with: application_info[:description]
-    click_button "Submit Application"
-
-    application = Application.first
-
-    visit "/applications/#{application.id}"
-    within('#single-pets') do
-      click_link "Approve Single Pet"
-    end
-
-    expect(page).to have_current_path("/pets/#{@pet1.id}")
-    expect(page).to have_content("pending")
-    expect(page).to have_content("On hold for #{application.name}")
-  end
-
 
   it "I can approve multiple pet adoptions per application" do
     application_info = {name:         "Rick Astley",

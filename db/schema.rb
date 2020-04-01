@@ -46,11 +46,8 @@ ActiveRecord::Schema.define(version: 20200401031020) do
     t.bigint "shelter_id"
     t.string "status", default: "adoptable"
     t.string "description"
-<<<<<<< HEAD
     t.string "application_approved"
-=======
     t.string "approved_for"
->>>>>>> 6a3302982adb99315c2c411cc2d5fde86e2c2770
     t.index ["shelter_id"], name: "index_pets_on_shelter_id"
   end
 

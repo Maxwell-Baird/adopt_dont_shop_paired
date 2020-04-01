@@ -20,7 +20,7 @@ class ApplicationsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
+
   def status
     @pet = Pet.find(params[:pet])
     application = Application.find(params[:id])
@@ -38,7 +38,8 @@ class ApplicationsController < ApplicationController
     @pet.application_approved = '-1'
     @pet.save
     redirect_to "/pets/#{@pet.id}"
-=======
+  end
+
   def update
     @application = Application.find(params[:application_id])
     if params[:pet_id].nil?
@@ -49,7 +50,7 @@ class ApplicationsController < ApplicationController
       Pet.update(params[:pet_id], status: "pending", approved_for: @application.name)
       redirect_to "/pets/#{params[:pet_id]}"
     end
->>>>>>> 6a3302982adb99315c2c411cc2d5fde86e2c2770
+
   end
 
   private
