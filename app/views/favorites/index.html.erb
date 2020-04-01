@@ -7,6 +7,7 @@
     <article id="pet-<%= pet_id %>">
       <h2><%= link_to @favorites.find_pet(pet_id).name, "/pets/#{@favorites.find_pet(pet_id).id}" %></h2>
       <%= image_tag @favorites.find_pet(pet_id).image %>
+      <p></p>
       <%= link_to 'Remove from favorites', "/favorites/#{pet_id}", method: :delete %>
     </article>
   <% end %>
