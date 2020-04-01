@@ -69,9 +69,11 @@ RSpec.describe "As a visitor", type: :feature do
     within("#favorites") do
       expect(page).to have_content("Favorites: 1")
     end
-    expect(page).to have_content(@pet2.name)
-    expect(page).to_not have_content(@pet1.name)
-    expect(page).to_not have_content(@pet3.name)
+    within("#favorite-pets") do
+      expect(page).to have_content(@pet2.name)
+      expect(page).to_not have_content(@pet1.name)
+      expect(page).to_not have_content(@pet3.name)
+    end
   end
 
   it "I cannot submit an incomplete application" do

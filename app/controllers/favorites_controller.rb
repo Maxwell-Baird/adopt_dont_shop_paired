@@ -1,7 +1,6 @@
 class FavoritesController < ApplicationController
   def index
-    # pets = Pet.where("application_id !=")
-    # require 'pry'; binding.pry
+    @application_pets = Pet.joins(:applications)
   end
 
   def update

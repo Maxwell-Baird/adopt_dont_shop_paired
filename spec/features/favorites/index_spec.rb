@@ -62,7 +62,7 @@ RSpec.describe "As a visitor", type: :feature do
     expect(page).to have_content("You have no favorited pets")
   end
 
-  xit "I can see a list of pets that have applications on them" do
+  it "I can see a list of pets that have applications on them" do
     application_info = {name:         "Rick Astley",
                         address:      "123 Wisteria Ln",
                         city:         "Denver",
@@ -83,13 +83,12 @@ RSpec.describe "As a visitor", type: :feature do
     fill_in :description, with: application_info[:description]
     click_button "Submit Application"
 
-    within('#pets-with-applications') do
+    within('#application-pets') do
       expect(page).to have_content(@pet1.name)
       expect(page).to have_content(@pet2.name)
-
       click_link @pet2.name
-
-      expect(page).to have_current_path("/pets/#{pet2.id}")
     end
+    
+    expect(page).to have_current_path("/pets/#{@pet2.id}")
   end
 end
