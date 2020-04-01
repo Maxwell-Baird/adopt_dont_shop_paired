@@ -22,8 +22,13 @@ class SheltersController < ApplicationController
   end
 
   def update
-    shelter = Shelter.update(params[:id], shelter_params)
-    redirect_to "/shelters/#{shelter.id}"
+    @shelter = Shelter.update(params[:id], shelter_params)
+    if @shelter.update_attributes(shelter_params)
+      redirect_to "/shelters/#{@shelter.id}"
+    else
+      flash.now[:notice] = "Shelter not updated: Required information missing."
+      render :edit
+    end
   end
 
   def destroy
@@ -42,4 +47,5 @@ class SheltersController < ApplicationController
   def shelter_params
     params.permit(:name, :address, :city, :state, :zip)
   end
+\
 end
