@@ -12,6 +12,7 @@ class ApplicationsController < ApplicationController
   end
 
   def create
+
     @application = Application.new(application_params)
     if @application.save
       @application.pets << params[:pets].map { |pet_id_str| Pet.find(pet_id_str.to_i) }

@@ -9,5 +9,10 @@ class Pet < ApplicationRecord
     end
   end
 
+  def applicant  
+    applicant = Application.find(self.application_approved)
+    applicant.name
+  end
+
   validates_presence_of :image, :name, :description, :approx_age, :sex, :status
 end
