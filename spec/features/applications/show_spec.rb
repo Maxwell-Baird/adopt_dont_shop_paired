@@ -59,5 +59,8 @@ RSpec.describe "As a visitor" do
     expect(page).to have_content("Description: #{@application.description}")
     expect(page).to have_content(@pet1.name)
     expect(page).to have_content(@pet2.name)
+
+    click_on @pet1.name
+    expect(page).to have_current_path("/pets/#{@pet1.id}")
   end
 end

@@ -3,6 +3,10 @@ class ApplicationsController < ApplicationController
     @pets = Pet.find(favorites.contents)
   end
 
+  def show
+    @application = Application.find(params[:id])
+  end
+
   def create
     @application = Application.new(application_params)
     if @application.save
