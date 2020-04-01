@@ -1,22 +1,33 @@
 <main>
   <h2>Application #<%= @application.id %></h2>
-  <p>
-    Name: <%= @application.name %><br/>
-    Address: <%= @application.address %><br/>
-    City: <%= @application.city %><br/>
-    State: <%= @application.state %><br/>
-    Zip: <%= @application.zip %><br/>
-    Phone: <%= @application.phone %><br/>
-    Description: <%= @application.description %>
-  </p>
-  <% @application.pets.each do |pet| %>
-    <%= link_to pet.name, "/pets/#{pet.id}" %><br/>
-    <% if pet.application_approved == @application.id.to_s%>
-      <%= link_to "Revoke #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :put%><br/>
-    <%elsif pet.application_approved == '-1' || pet.application_approved == nil%>
-      <%= link_to "Approve #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :patch%><br/>
-    <%else%>
-      <p> Sorry, <% pet.name %> is currently in pending </p>
+  <section id="applicant-info"
+    <p>
+      Name: <%= @application.name %><br/>
+      Address: <%= @application.address %><br/>
+      City: <%= @application.city %><br/>
+      State: <%= @application.state %><br/>
+      Zip: <%= @application.zip %><br/>
+      Phone: <%= @application.phone %><br/>
+      Description: <%= @application.description %>
+    </p>
+  </section>
+  <section id="single-pets">
+    <% @application.pets.each do |pet| %>
+      <%= link_to pet.name, "/pets/#{pet.id}" %> 
+      <% if pet.application_approved == @application.id.to_s%>
+        <%= link_to "Revoke #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :put%><br/>
+      <%elsif pet.application_approved == '-1' || pet.application_approved == nil%>
+        <%= link_to "Approve #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :patch%><br/>
+      <%else%>
+        <p> Sorry, <% pet.name %> is currently in pending </p>
+      <% end %>
     <% end %>
-  <% end %>
+  </section>
+  <section id="multiple-pets">
+    <%= form_tag "/applications/#{@application.id}", method: :patch do %>
+      <%= label_tag :pets %><br/>
+      <%= select_tag :pets, options_from_collection_for_select(@application.pets, "id", "name"), multiple: true %><br/>
+      <%= submit_tag "Approve Multiple Pets" %>
+    <% end %>
+  </section>
 </main>
