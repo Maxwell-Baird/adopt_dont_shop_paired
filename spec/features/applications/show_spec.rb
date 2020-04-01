@@ -104,6 +104,8 @@ RSpec.describe "As a visitor" do
     click_on "Revoke #{@pet1.name} application"
     expect(page).to have_current_path("/pets/#{@pet1.id}")
     expect(page).to have_content("Status: adoptable")
+    visit "/applications/#{@application.id}"
+    expect(page).to have_content("Approve #{@pet1.name} application")
 
   end
 end

@@ -32,7 +32,7 @@ class ApplicationsController < ApplicationController
   def revoke
     @pet = Pet.find(params[:pet])
     application = Application.find(params[:id])
-    Pet.update(params[:pet], status: "adoptable", application_approved: application.id)
+    Pet.update(params[:pet], status: "adoptable", application_approved: nil)
     redirect_to "/pets/#{@pet.id}"
   end
 
