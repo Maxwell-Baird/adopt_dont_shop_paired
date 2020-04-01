@@ -27,7 +27,7 @@
   <section id="multiple-pets">
     <%= form_tag "/applications/#{@application.id}", method: :patch do %>
       <%= label_tag :pets %><br/>
-      <%= select_tag :pets, options_from_collection_for_select(@application.pets, "id", "name"), multiple: true %><br/>
+      <%= select_tag :pets, options_from_collection_for_select(@application.pets.where.not(status: "Pending"), "id", "name"), multiple: true %><br/>
       <%= submit_tag "Approve Multiple Pets" %>
     <% end %>
   </section>
