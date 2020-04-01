@@ -8,6 +8,14 @@
     <%= link_to "Delete Shelter", "#{@shelter.id}", method: :delete %></p>
   </section>
 
+  <section id="statistics">
+    <p>
+      Count of Pets: <%= @shelter.pets.length %><br/>
+      Average Rating: <%= @shelter.average_rating %><br/>
+      Applications: <%= @shelter.application_count %>
+    </p>
+  </section>
+
   <section id="reviews">
     <%= link_to "New Review", "#{@shelter.id}/reviews/new" %>
     <h2>Reviews</h2>
