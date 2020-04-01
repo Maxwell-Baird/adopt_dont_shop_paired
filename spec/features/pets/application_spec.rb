@@ -17,40 +17,32 @@ RSpec.describe "As a visitor", type: :feature do
                                 sex:          "male",
                                 status:       "adoptable")
 
-    application_info_1 = {name: "Rick Astley",
+    applicant_1 = pet.applications.create(name: "Rick Astley",
                         address:      "123 Wisteria Ln",
                         city:         "Denver",
                         state:        "CO",
                         zip:          "80202",
                         phone:        "123-4567",
-                        description:  "I would make a great dog dad!"}
+                        description:  "I would make a great dog dad!")
 
+  applicant_2 = pet.applications.create(name: "Maxwell Baird",
+                      address:      "123 Wisteria Ln",
+                      city:         "Denver",
+                      state:        "CO",
+                      zip:          "80202",
+                      phone:        "123-4567",
+                      description:  "I would make a great dog dad!")
 
-    visit "/pets/#{pet.id}"
-    click_link "Favorite Pet"
-
-    visit "/favorites"
-    click_link "Adopt Pets"
-    select pet.name, from: :pets
-    fill_in :name, with: application_info_1[:name]
-    fill_in :address, with: application_info_1[:address]
-    fill_in :city, with: application_info_1[:city]
-    fill_in :state, with: application_info_1[:state]
-    fill_in :zip, with: application_info_1[:zip]
-    fill_in :phone, with: application_info_1[:phone]
-    fill_in :description, with: application_info_1[:description]
-    click_button "Submit Application"
-    application = Application.first
-    visit "/favorites"
 
     visit "/pets/#{pet.id}"
 
     expect(page).to have_content("Applications")
     click_link "Applications"
     expect(page).to have_current_path("/pets/#{pet.id}/applications")
-    expect(page).to have_content(application_info_1[:name])
-    click_link "#{application_info_1[:name]}"
-    expect(page).to have_current_path("/applications/#{application.id}")
+    expect(page).to have_content(applicant_1.name)
+    expect(page).to have_content(applicant_2.name)
+    click_link "#{applicant_1.name}"
+    expect(page).to have_current_path("/applications/#{applicant_1.id}")
   end
 
   it "I can see a no applications at '/pets/:id/applications'" do
@@ -67,6 +59,7 @@ RSpec.describe "As a visitor", type: :feature do
                                 approx_age:   6,
                                 sex:          "male",
                                 status:       "adoptable")
+
 
     visit "/pets/#{pet.id}"
 

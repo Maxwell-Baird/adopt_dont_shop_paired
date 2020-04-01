@@ -20,7 +20,7 @@
       <%elsif pet.application_approved == '-1' || pet.application_approved == nil%>
         <%= link_to "Approve #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :patch%><br/>
       <%else%>
-        <p> Sorry, <% pet.name %> is currently in pending </p>
+        <p> Sorry, <%=pet.name %> is currently in pending</p>
       <% end %>
     <% end %>
   </section>

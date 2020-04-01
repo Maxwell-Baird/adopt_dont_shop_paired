@@ -74,6 +74,26 @@ RSpec.describe "As a visitor" do
     expect(page).to have_content("On hold for #{@application.name}")
 
   end
+
+  it "I cannot approve an application" do
+    applicant_2 = @pet1.applications.create(name: "Maxwell Baird",
+                        address:      "123 Wisteria Ln",
+                        city:         "Denver",
+                        state:        "CO",
+                        zip:          "80202",
+                        phone:        "123-4567",
+                        description:  "I would make a great dog dad!")
+
+    visit "/applications/#{@application.id}"
+
+    expect(page).to have_content("Approve #{@pet1.name} application")
+    click_on "Approve #{@pet1.name} application"
+    visit "/applications/#{applicant_2.id}"
+    expect(page).to have_content("Sorry, #{@pet1.name} is currently in pending")
+
+
+  end
+
   it "I can revoke an application" do
     visit "/applications/#{@application.id}"
 
