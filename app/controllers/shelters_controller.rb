@@ -8,8 +8,13 @@ class SheltersController < ApplicationController
   end
 
   def create
-    Shelter.create(shelter_params)
-    redirect_to '/shelters'
+    shelter = Shelter.new(shelter_params)
+    if shelter.save
+      redirect_to '/shelters'
+    else
+      flash[:notice] = "Shelter not created: Required information missing."
+      render :new
+    end
   end
 
   def edit
@@ -17,13 +22,18 @@ class SheltersController < ApplicationController
   end
 
   def update
-    shelter = Shelter.update(params[:id], shelter_params)
-    redirect_to "/shelters/#{shelter.id}"
+    @shelter = Shelter.update(params[:id], shelter_params)
+    if @shelter.update_attributes(shelter_params)
+      redirect_to "/shelters/#{@shelter.id}"
+    else
+      flash.now[:notice] = "Shelter not updated: Required information missing."
+      render :edit
+    end
   end
 
   def destroy
     shelter = Shelter.find(params[:id])
-    if shelter.pets.any? {|pet| pet.status == "pending" }
+    if shelter.pets.any? {|pet| pet.status == "Pending" }
       flash[:notice] = "Cannot delete a shelter with pets pending adoption"
       redirect_to "/shelters/#{shelter.id}"
     else
@@ -37,4 +47,5 @@ class SheltersController < ApplicationController
   def shelter_params
     params.permit(:name, :address, :city, :state, :zip)
   end
+\
 end

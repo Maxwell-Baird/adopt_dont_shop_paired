@@ -12,20 +12,27 @@ class PetsController < ApplicationController
   end
 
   def update
-    pet = Pet.update(params[:id], pet_params)
-    redirect_to "/pets/#{pet.id}"
+    @pet = Pet.update(params[:id], pet_params)
+    if @pet.update_attributes(pet_params)
+      redirect_to "/pets/#{@pet.id}"
+    else
+      flash.now[:notice] = "Pet not updated: Required information missing."
+      render :edit
+    end
   end
 
   def destroy
-    Pet.destroy(params[:id])
-    redirect_to "/pets"
-  end
-
-  def applications
     @pet = Pet.find(params[:id])
+    if @pet.status == 'adoptable'
+      Pet.destroy(params[:id])
+      redirect_to "/pets"
+    else
+      flash[:notice] = "Sorry this pet is currently in pending"
+      render :show
+    end
   end
 
-  
+
 
   private
 

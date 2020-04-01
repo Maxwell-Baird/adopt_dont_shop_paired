@@ -16,7 +16,7 @@
       <%= link_to pet.name, "/pets/#{pet.id}" %>
       <p></p>
       <% if pet.application_approved == @application.id.to_s%>
-        <%= link_to "Revoke #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :put%><br/>
+        <%= link_to "Revoke #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :patch%><br/>
       <%elsif pet.application_approved == '-1' || pet.application_approved == nil%>
         <%= link_to "Approve #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :patch%><br/>
       <%else%>
@@ -27,7 +27,7 @@
   <section id="multiple-pets">
     <%= form_tag "/applications/#{@application.id}", method: :patch do %>
       <%= label_tag :pets %><br/>
-      <%= select_tag :pets, options_from_collection_for_select(@application.pets, "id", "name"), multiple: true %><br/>
+      <%= select_tag :pets, options_from_collection_for_select(@application.pets.where.not(status: "Pending"), "id", "name"), multiple: true %><br/>
       <%= submit_tag "Approve Multiple Pets" %>
     <% end %>
   </section>
