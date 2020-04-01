@@ -63,4 +63,50 @@ RSpec.describe "As a visitor" do
     click_on @pet1.name
     expect(page).to have_current_path("/pets/#{@pet1.id}")
   end
+
+  it "I can approve an application" do
+    visit "/applications/#{@application.id}"
+
+    expect(page).to have_content("Approve #{@pet1.name} application")
+    click_on "Approve #{@pet1.name} application"
+    expect(page).to have_current_path("/pets/#{@pet1.id}")
+    expect(page).to have_content("Status: Pending")
+    expect(page).to have_content("On hold for #{@application.name}")
+
+  end
+
+  it "I see a pet is pending if I am a different applicant" do
+    applicant_2 = @pet1.applications.create(name: "Maxwell Baird",
+                        address:      "123 Wisteria Ln",
+                        city:         "Denver",
+                        state:        "CO",
+                        zip:          "80202",
+                        phone:        "123-4567",
+                        description:  "I would make a great dog dad!")
+
+    visit "/applications/#{@application.id}"
+
+    expect(page).to have_content("Approve #{@pet1.name} application")
+    click_on "Approve #{@pet1.name} application"
+    visit "/applications/#{applicant_2.id}"
+    expect(page).to have_content("Sorry, #{@pet1.name} is currently in pending")
+
+
+  end
+
+  it "I can revoke an application" do
+    visit "/applications/#{@application.id}"
+
+    expect(page).to have_content("Approve #{@pet1.name} application")
+    click_on "Approve #{@pet1.name} application"
+    visit "/applications/#{@application.id}"
+    expect(page).to have_content("Revoke #{@pet1.name} application")
+    click_on "Revoke #{@pet1.name} application"
+    expect(page).to have_current_path("/applications/#{@application.id}")
+    visit "/pets/#{@pet1.id}"
+    expect(page).to have_content("Status: adoptable")
+    visit "/applications/#{@application.id}"
+    expect(page).to have_content("Approve #{@pet1.name} application")
+
+  end
 end
