@@ -1,15 +1,26 @@
 <main>
   <h2>Application #<%= @application.id %></h2>
-  <p>
-    Name: <%= @application.name %><br/>
-    Address: <%= @application.address %><br/>
-    City: <%= @application.city %><br/>
-    State: <%= @application.state %><br/>
-    Zip: <%= @application.zip %><br/>
-    Phone: <%= @application.phone %><br/>
-    Description: <%= @application.description %>
-  </p>
-  <% @application.pets.each do |pet| %>
-    <%= link_to pet.name, "/pets/#{pet.id}" %><br/>
-  <% end %>
+  <section id="applicant-info"
+    <p>
+      Name: <%= @application.name %><br/>
+      Address: <%= @application.address %><br/>
+      City: <%= @application.city %><br/>
+      State: <%= @application.state %><br/>
+      Zip: <%= @application.zip %><br/>
+      Phone: <%= @application.phone %><br/>
+      Description: <%= @application.description %>
+    </p>
+  </section>
+  <section id="single-pets">
+    <% @application.pets.each do |pet| %>
+      <%= link_to pet.name, "/pets/#{pet.id}" %> | <%= link_to "Approve Single Pet", "/applications/#{@application.id}/#{pet.id}", method: "patch" %><br/>
+    <% end %>
+  </section>
+  <section id="multiple-pets">
+    <%= form_tag "/applications/#{@application.id}", method: :patch do %>
+      <%= label_tag :pets %><br/>
+      <%= select_tag :pets, options_from_collection_for_select(@application.pets, "id", "name"), multiple: true %><br/>
+      <%= submit_tag "Approve Multiple Pets" %>
+    <% end %>
+  </section>
 </main>

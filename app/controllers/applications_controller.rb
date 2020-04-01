@@ -20,6 +20,18 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def update
+    @application = Application.find(params[:application_id])
+    if params[:pet_id].nil?
+      params[:pets].each do |pet_id_str|
+        Pet.update(pet_id_str, status: "pending", approved_for: @application.name)
+      end
+    else
+      Pet.update(params[:pet_id], status: "pending", approved_for: @application.name)
+      redirect_to "/pets/#{params[:pet_id]}"
+    end
+  end
+
   private
 
   def application_params
