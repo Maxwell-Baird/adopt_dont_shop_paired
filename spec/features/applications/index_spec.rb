@@ -25,7 +25,7 @@ RSpec.describe "As a visitor", type: :feature do
                         phone:        "123-4567",
                         description:  "I would make a great dog dad!")
 
-  applicant_2 = pet.applications.create(name: "Maxwell Baird",
+    applicant_2 = pet.applications.create(name: "Maxwell Baird",
                       address:      "123 Wisteria Ln",
                       city:         "Denver",
                       state:        "CO",
