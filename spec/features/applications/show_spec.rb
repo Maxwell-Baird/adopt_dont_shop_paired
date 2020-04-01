@@ -75,7 +75,7 @@ RSpec.describe "As a visitor" do
 
   end
 
-  it "I cannot approve an application" do
+  it "I see a pet is pending if I am a different applicant" do
     applicant_2 = @pet1.applications.create(name: "Maxwell Baird",
                         address:      "123 Wisteria Ln",
                         city:         "Denver",
