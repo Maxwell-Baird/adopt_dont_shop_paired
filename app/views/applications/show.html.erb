@@ -11,7 +11,10 @@
   </p>
   <% @application.pets.each do |pet| %>
     <%= link_to pet.name, "/pets/#{pet.id}" %><br/>
-
-    <%= link_to "Approve #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :patch%><br/>
+    <% if pet.application_approved == @application.id.to_s%>
+      <%= link_to "Revoke #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :put%><br/>
+    <%elsif pet.application_approved == '-1' || pet.application_approved == nil%>
+      <%= link_to "Approve #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :patch%><br/>
+    <% end %>
   <% end %>
 </main>

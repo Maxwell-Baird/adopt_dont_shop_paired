@@ -30,6 +30,15 @@ class ApplicationsController < ApplicationController
     redirect_to "/pets/#{@pet.id}"
   end
 
+  def revoke
+    @pet = Pet.find(params[:pet])
+    application = Application.find(params[:id])
+    @pet.status = "adoptable"
+    @pet.application_approved = '-1'
+    @pet.save
+    redirect_to "/pets/#{@pet.id}"
+  end
+
   private
 
   def application_params
