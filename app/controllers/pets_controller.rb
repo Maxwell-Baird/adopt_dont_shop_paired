@@ -17,15 +17,21 @@ class PetsController < ApplicationController
   end
 
   def destroy
-    Pet.destroy(params[:id])
-    redirect_to "/pets"
+    @pet = Pet.find(params[:id])
+    if @pet.status == 'adoptable'
+      Pet.destroy(params[:id])
+      redirect_to "/pets"
+    else
+      flash[:notice] = "Sorry this pet is currently in pending"
+      render :show
+    end
   end
 
   def applications
     @pet = Pet.find(params[:id])
   end
 
-  
+
 
   private
 
