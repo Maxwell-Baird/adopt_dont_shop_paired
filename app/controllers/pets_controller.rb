@@ -21,6 +21,12 @@ class PetsController < ApplicationController
     redirect_to "/pets"
   end
 
+  def applications
+    @pet = Pet.find(params[:id])
+  end
+
+  
+
   private
 
   def pet_params

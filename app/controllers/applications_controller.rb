@@ -20,15 +20,28 @@ class ApplicationsController < ApplicationController
     end
   end
 
+
+  def status
+    @pet = Pet.find(params[:pet])
+    application = Application.find(params[:id])
+    Pet.update(params[:pet], status: "Pending", application_approved: application.id)
+    flash[:notice] = "On hold for #{application.name}"
+    redirect_to "/pets/#{@pet.id}"
+  end
+
+  def revoke
+    @pet = Pet.find(params[:pet])
+    application = Application.find(params[:id])
+    Pet.update(params[:pet], status: "adoptable", application_approved: nil)
+    redirect_to "/applications/#{application.id}"
+  end
+
   def update
     @application = Application.find(params[:application_id])
     if params[:pet_id].nil?
       params[:pets].each do |pet_id_str|
-        Pet.update(pet_id_str, status: "pending", approved_for: @application.name)
+        Pet.update(pet_id_str, status: "Pending", application_approved: @application.id)
       end
-    else
-      Pet.update(params[:pet_id], status: "pending", approved_for: @application.name)
-      redirect_to "/pets/#{params[:pet_id]}"
     end
   end
 
