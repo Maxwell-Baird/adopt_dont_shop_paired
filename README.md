@@ -1,7 +1,7 @@
 ## User Stories
 
 ```
-[ ] done
+[X] done
 
 User Story 1, Deploy your application to Heroku
 
@@ -133,7 +133,7 @@ The favorite indicator in the nav bar has incremented by one
 
 
 ```
-[ ] done
+[X] done
 
 User Story 10, Favorite Index Page
 
@@ -262,7 +262,7 @@ And I see a flash message indicating that I must complete the form in order to s
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 18, List of Pets that have applications on them
 
