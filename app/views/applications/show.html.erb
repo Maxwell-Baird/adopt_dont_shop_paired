@@ -16,7 +16,7 @@
       <%= link_to pet.name, "/pets/#{pet.id}" %>
       <p></p>
       <% if pet.application_approved == @application.id.to_s%>
-        <%= link_to "Revoke #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :put%><br/>
+        <%= link_to "Revoke #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :patch%><br/>
       <%elsif pet.application_approved == '-1' || pet.application_approved == nil%>
         <%= link_to "Approve #{pet.name} application", "/applications/#{@application.id}/pets/#{pet.id}", method: :patch%><br/>
       <%else%>

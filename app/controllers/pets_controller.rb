@@ -32,10 +32,6 @@ class PetsController < ApplicationController
     end
   end
 
-  def applications
-    @pet = Pet.find(params[:id])
-  end
-
 
 
   private

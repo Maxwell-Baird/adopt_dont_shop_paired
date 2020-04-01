@@ -50,10 +50,9 @@ Rails.application.routes.draw do
 
   post '/applications', to: 'applications#create'
 
-  get 'pets/:id/applications', to: 'pets#applications'
-  patch '/applications/:id/pets/:pet', to: 'applications#status'
-  put '/applications/:id/pets/:pet', to: 'applications#revoke'
-
-  patch 'applications/:application_id/:pet_id', to: 'applications#update'
-  patch '/applications/:application_id', to: 'applications#update'
+  get 'pets/:id/applications', to: 'applications#index'
+  patch '/applications/:id/pets/:pet', to: 'applications#update'
+  patch '/applications/:id/pets/:pet', to: 'applications#update'
+  patch 'applications/:id/:pet', to: 'applications#update'
+  patch '/applications/:id', to: 'applications#update'
 end
