@@ -63,4 +63,15 @@ RSpec.describe "As a visitor" do
     click_on @pet1.name
     expect(page).to have_current_path("/pets/#{@pet1.id}")
   end
+
+  it "I can approve an application" do
+    visit "/applications/#{@application.id}"
+
+    expect(page).to have_content("Approve #{@pet1.name} application")
+    click_on "Approve #{@pet1.name} application"
+    expect(page).to have_current_path("/pets/#{@pet1.id}")
+    expect(page).to have_content("Status: Pending")
+    expect(page).to have_content("On hold for #{@application.name}")
+    
+  end
 end
