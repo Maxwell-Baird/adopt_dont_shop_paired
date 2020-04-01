@@ -1,16 +1,10 @@
 class SheltersController < ApplicationController
   def index
-    @favorites = Favorites.new(session[:favorites])
     @shelters = Shelter.all
   end
 
   def show
-    @favorites = Favorites.new(session[:favorites])
     @shelter = Shelter.find(params[:id])
-  end
-
-  def new
-    @favorites = Favorites.new(session[:favorites])
   end
 
   def create
@@ -19,7 +13,6 @@ class SheltersController < ApplicationController
   end
 
   def edit
-    @favorites = Favorites.new(session[:favorites])
     @shelter = Shelter.find(params[:id])
   end
 

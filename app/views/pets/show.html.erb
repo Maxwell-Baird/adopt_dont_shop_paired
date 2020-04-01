@@ -10,9 +10,10 @@
       <p>Approximate Age: <%= @pet.approx_age %><br/>
       Sex: <%= @pet.sex %><br/>
       Status: <%= @pet.status %><br/>
+      <%= "On hold for #{@pet.approved_for}" unless @pet.approved_for.nil? %>
       <%= link_to "Update Pet", "#{@pet.id}/edit" %> |
       <%= link_to "Delete Pet", "#{@pet.id}", method: :delete %><br/>
-      <% if !@favorites.been_favorited(@pet.id.to_s) %>
+      <% if !favorites.been_favorited(@pet.id.to_s) %><br/>
         <%= link_to 'Favorite Pet', "/favorites/#{@pet.id}", method: :patch %></p>
       <%else%>
         <%= link_to 'Remove from favorites', "/favorites/#{@pet.id}", method: :delete %>
