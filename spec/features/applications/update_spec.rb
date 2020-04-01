@@ -58,8 +58,8 @@ RSpec.describe "As a visitor" do
     end
 
     visit "/pets/#{@pet1.id}"
-    expect(page).to have_content("Status: pending")
+    expect(page).to have_content("Status: Pending")
     visit "/pets/#{@pet2.id}"
-    expect(page).to have_content("Status: pending")
+    expect(page).to have_content("Status: Pending")
   end
 end
