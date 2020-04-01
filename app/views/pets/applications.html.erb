@@ -1,0 +1,10 @@
+<main>
+  <h1><%= @pet.name %></h1>
+  <%if @pet.applications.length == 0 %>
+    <p> Sorry, there are no applications filled out for <%= @pet.name %> </p>
+  <% else %>
+    <% @pet.applications.each do |application| %>
+      <h2><%= link_to application.name, "/applications/#{application.id}" %></h2>
+    <% end %>
+  <% end %>
+</main>
