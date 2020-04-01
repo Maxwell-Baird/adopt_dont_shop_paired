@@ -1,7 +1,7 @@
 ## User Stories
 
 ```
-[ ] done
+[X] done
 
 User Story 1, Deploy your application to Heroku
 
@@ -133,7 +133,7 @@ The favorite indicator in the nav bar has incremented by one
 
 
 ```
-[ ] done
+[X] done
 
 User Story 10, Favorite Index Page
 
@@ -157,7 +157,7 @@ I am taken to the favorites index page
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 12, Can't Favorite a Pet More Than Once
 
@@ -174,7 +174,7 @@ And I also see that my favorites indicator has decremented by 1
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 13, Remove a Favorite from Favorites Page
 
@@ -189,7 +189,7 @@ And I also see that the favorites indicator has decremented by 1
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 14, No Favorites Page
 
@@ -200,7 +200,7 @@ I see text saying that I have no favorited pets
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 15, Remove all Favorite from Favorites Page
 
@@ -219,7 +219,7 @@ And the favorites indicator returns to 0
 Users will be able to submit an application for one ore more pets they they've favorited.
 
 ```
-[ ] done
+[X] done
 
 User Story 16, Applying for a Pet
 
@@ -243,7 +243,7 @@ And I'm taken back to my favorites page where I no longer see the pets for which
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 17, Incomplete application for a Pet
 
@@ -262,7 +262,7 @@ And I see a flash message indicating that I must complete the form in order to s
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 18, List of Pets that have applications on them
 

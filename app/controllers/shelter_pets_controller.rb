@@ -1,11 +1,9 @@
 class ShelterPetsController < ApplicationController
   def index
-    @favorites = Favorites.new(session[:favorites])
     @shelter = Shelter.find(params[:shelter_id])
   end
 
   def new
-    @favorites = Favorites.new(session[:favorites])
     @shelter = Shelter.find(params[:shelter_id])
   end
 
