@@ -17,8 +17,8 @@
         <%= link_to 'Favorite Pet', "/favorites/#{@pet.id}", method: :patch %></p>
       <%else%>
         <%= link_to 'Remove from favorites', "/favorites/#{@pet.id}", method: :delete %>
-      <%end%>
-      <%= link_to "Applications", "#{@pet.id}/applications" %> 
+      <%end%><br/>
+      <%= link_to "Applications", "#{@pet.id}/applications" %>
     </div>
     <div class="col-8">
       <p><%= @pet.description %></p>
