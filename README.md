@@ -412,7 +412,7 @@ All reviews associated with that shelter are also deleted
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 29, Flash Messages for Shelter Create and Update
 
@@ -423,7 +423,7 @@ I see a flash message indicating which field(s) I am missing
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 30, Shelter Statistics
 
@@ -443,7 +443,7 @@ Visitors will have additional constraints when manipulating pet data in the data
 
 
 ```
-[ ] done
+[X] done
 
 User Story 31, Pets with approved applications cannot be deleted
 
@@ -456,7 +456,7 @@ Either:
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 32, Deleting a pet removes it from favorites
 
@@ -467,7 +467,7 @@ They are also removed from the favorites list
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 33, Flash Message for Pet Create and Update
 
@@ -482,7 +482,7 @@ I see a flash message indicating which field(s) I am missing
 Visitors will have additional constraints when manipulating pet data in the database.
 
 ```
-[ ] done
+[X] done
 
 User Story 34, All Pet Names are links to that Pet's Show Page
 
@@ -492,7 +492,7 @@ It is a link to their show page
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 35, All Shelter Names are links to that Shelter's Show Page
 
@@ -502,7 +502,7 @@ It is a link to their show page
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 36, All Applicant Names are links to that Applicant's application
 
