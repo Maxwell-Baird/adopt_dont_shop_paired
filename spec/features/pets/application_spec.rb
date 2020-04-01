@@ -52,6 +52,7 @@ RSpec.describe "As a visitor", type: :feature do
     click_link "#{application_info_1[:name]}"
     expect(page).to have_current_path("/applications/#{application.id}")
   end
+
   it "I can see a no applications at '/pets/:id/applications'" do
 
 
@@ -74,4 +75,5 @@ RSpec.describe "As a visitor", type: :feature do
     expect(page).to have_content("Sorry, there are no applications filled out for #{ pet.name}")
 
   end
+
 end
