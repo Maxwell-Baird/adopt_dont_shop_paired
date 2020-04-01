@@ -377,7 +377,7 @@ Visitors will have additional constraints when manipulating shelter data in the 
 
 
 ```
-[ ] done
+[X] done
 
 User Story 26, Shelters with Pets that have pending status cannot be Deleted
 

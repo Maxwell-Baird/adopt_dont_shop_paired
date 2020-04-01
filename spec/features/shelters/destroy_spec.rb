@@ -9,7 +9,6 @@ RSpec.describe "As a user", type: :feature do
                              zip:     "80231")
 
     visit "/shelters/#{shelter.id}"
-
     click_link "Delete Shelter"
 
     expect(page).to have_current_path("/shelters")
@@ -31,7 +30,25 @@ RSpec.describe "As a user", type: :feature do
 
     visit "/shelters/#{shelter.id}"
     click_link "Delete Shelter"
+
     expect(page).to have_current_path("/shelters/#{shelter.id}")
     expect(page).to have_content("Cannot delete a shelter with pets pending adoption")
+  end
+
+  it "When I delete a shelter, it's reviews are deleted, too" do
+    shelter = Shelter.create(name:    "Dumb Friends League",
+      address: "2080 S. Quebec St.",
+      city:    "Denver",
+      state:   "CO",
+      zip:     "80231")
+
+    review = shelter.reviews.create(title: "Awesome place!",
+                                    rating: 4,
+                                    content: "Truly enjoyed our time working with this shelter. Staff was great, and we found our perfect pet!",
+                                    photo: "https://i.imgur.com/c6SIBcM.jpg")
+
+    visit "/shelters/#{shelter.id}"
+    click_link "Delete Shelter"
+    expect(Review.count).to eq(0)
   end
 end
