@@ -402,7 +402,7 @@ Then all of their pets are deleted as well
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 28, Deleting Shelters Deletes its Reviews
 

@@ -42,13 +42,16 @@ RSpec.describe "As a user", type: :feature do
       state:   "CO",
       zip:     "80231")
 
-    review = shelter.reviews.create(title: "Awesome place!",
-                                    rating: 4,
-                                    content: "Truly enjoyed our time working with this shelter. Staff was great, and we found our perfect pet!",
-                                    photo: "https://i.imgur.com/c6SIBcM.jpg")
+    shelter.reviews.create(title: "Awesome place!",
+                           rating: 4,
+                           content: "Truly enjoyed our time working with this shelter. Staff was great, and we found our perfect pet!",
+                           photo: "https://i.imgur.com/c6SIBcM.jpg")
+
+    expect(Review.count).to eq(1)
 
     visit "/shelters/#{shelter.id}"
     click_link "Delete Shelter"
+    
     expect(Review.count).to eq(0)
   end
 end
